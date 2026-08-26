@@ -10,8 +10,8 @@
       "_rolldown-runtime-P0XoidVL.js"
     ]
   },
-  "_navigation-lTJlwbkV.js": {
-    "file": "boc/_next/static/chunks/navigation-lTJlwbkV.js",
+  "_navigation-B4hy41lD.js": {
+    "file": "boc/_next/static/chunks/navigation-B4hy41lD.js",
     "name": "navigation",
     "imports": [
       "_rolldown-runtime-P0XoidVL.js",
@@ -37,7 +37,7 @@
     "name": "rolldown-runtime"
   },
   "app/page.tsx": {
-    "file": "boc/_next/static/chunks/page-DBpMnqtO.js",
+    "file": "boc/_next/static/chunks/page-CYJm-Huk.js",
     "name": "page",
     "src": "app/page.tsx",
     "isDynamicEntry": true,
@@ -47,7 +47,7 @@
     ]
   },
   "node_modules/.pnpm/vinext@1.0.0-beta.2_@vitejs_46827034ea015a21abf9c268cda9eaa9/node_modules/vinext/dist/config/config-matchers.js": {
-    "file": "boc/_next/static/chunks/config-matchers-BzwjO8aO.js",
+    "file": "boc/_next/static/chunks/config-matchers-CodkFrei.js",
     "name": "config-matchers",
     "src": "node_modules/.pnpm/vinext@1.0.0-beta.2_@vitejs_46827034ea015a21abf9c268cda9eaa9/node_modules/vinext/dist/config/config-matchers.js",
     "isDynamicEntry": true,
@@ -57,20 +57,20 @@
     ]
   },
   "node_modules/.pnpm/vinext@1.0.0-beta.2_@vitejs_46827034ea015a21abf9c268cda9eaa9/node_modules/vinext/dist/shims/error.js": {
-    "file": "boc/_next/static/chunks/error-DXGhkWYJ.js",
+    "file": "boc/_next/static/chunks/error-zW1ZAnpm.js",
     "name": "error",
     "src": "node_modules/.pnpm/vinext@1.0.0-beta.2_@vitejs_46827034ea015a21abf9c268cda9eaa9/node_modules/vinext/dist/shims/error.js",
     "isDynamicEntry": true,
     "imports": [
       "virtual:vinext-client-entry",
       "_rolldown-runtime-P0XoidVL.js",
-      "_navigation-lTJlwbkV.js",
+      "_navigation-B4hy41lD.js",
       "_preload-helper-OtbUDa6N.js",
       "_framework-CChkJKRV.js"
     ]
   },
   "node_modules/.pnpm/vinext@1.0.0-beta.2_@vitejs_46827034ea015a21abf9c268cda9eaa9/node_modules/vinext/dist/shims/internal/hybrid-client-route-owner.js": {
-    "file": "boc/_next/static/chunks/hybrid-client-route-owner-DE7XihP6.js",
+    "file": "boc/_next/static/chunks/hybrid-client-route-owner-IFVHQ_CX.js",
     "name": "hybrid-client-route-owner",
     "src": "node_modules/.pnpm/vinext@1.0.0-beta.2_@vitejs_46827034ea015a21abf9c268cda9eaa9/node_modules/vinext/dist/shims/internal/hybrid-client-route-owner.js",
     "isDynamicEntry": true,
@@ -81,38 +81,38 @@
     ]
   },
   "node_modules/.pnpm/vinext@1.0.0-beta.2_@vitejs_46827034ea015a21abf9c268cda9eaa9/node_modules/vinext/dist/shims/layout-segment-context.js": {
-    "file": "boc/_next/static/chunks/layout-segment-context-CsZR-OXw.js",
+    "file": "boc/_next/static/chunks/layout-segment-context-bW1DQ5Sj.js",
     "name": "layout-segment-context",
     "src": "node_modules/.pnpm/vinext@1.0.0-beta.2_@vitejs_46827034ea015a21abf9c268cda9eaa9/node_modules/vinext/dist/shims/layout-segment-context.js",
     "isDynamicEntry": true,
     "imports": [
       "_rolldown-runtime-P0XoidVL.js",
-      "_navigation-lTJlwbkV.js",
+      "_navigation-B4hy41lD.js",
       "virtual:vinext-app-browser-entry",
       "_framework-CChkJKRV.js"
     ]
   },
   "virtual:vinext-app-browser-entry": {
-    "file": "boc/_next/static/chunks/index-5oVRNtnk.js",
+    "file": "boc/_next/static/chunks/index-buDYyDaC.js",
     "name": "index",
     "src": "virtual:vinext-app-browser-entry",
     "isEntry": true,
     "imports": [
       "_rolldown-runtime-P0XoidVL.js",
-      "_navigation-lTJlwbkV.js",
+      "_navigation-B4hy41lD.js",
       "_preload-helper-OtbUDa6N.js",
       "_framework-CChkJKRV.js",
       "_base-path-ctAawB73.js"
     ],
     "dynamicImports": [
       "virtual:vinext-app-browser-entry",
-      "_navigation-lTJlwbkV.js",
+      "_navigation-B4hy41lD.js",
       "node_modules/.pnpm/vinext@1.0.0-beta.2_@vitejs_46827034ea015a21abf9c268cda9eaa9/node_modules/vinext/dist/shims/layout-segment-context.js",
       "app/page.tsx"
     ]
   },
   "virtual:vinext-client-entry": {
-    "file": "boc/_next/static/chunks/vinext-client-entry-CFsiwtcz.js",
+    "file": "boc/_next/static/chunks/vinext-client-entry-BmFBjEES.js",
     "name": "vinext-client-entry",
     "src": "virtual:vinext-client-entry",
     "isEntry": true,

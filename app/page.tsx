@@ -137,11 +137,11 @@ export default function Home() {
         type="button"
         className={`music-toggle${isMusicPlaying ? " is-playing" : ""}`}
         onClick={toggleMusic}
-        aria-label={isMusicPlaying ? "暂停轻音乐" : "播放轻音乐"}
+        aria-label={isMusicPlaying ? "暂停钢琴曲" : "播放钢琴曲"}
         aria-pressed={isMusicPlaying}
       >
         <span className="music-disc" aria-hidden="true"><i /></span>
-        <span className="music-label">{isMusicPlaying ? "音乐播放中" : "轻音乐"}</span>
+        <span className="music-label">{isMusicPlaying ? "钢琴曲播放中" : "舒缓钢琴曲"}</span>
       </button>
       <section className="hero" id="top" aria-labelledby="hero-title">
         <div className="hero-grid" aria-hidden="true" />
@@ -383,9 +383,8 @@ export default function Home() {
             </div>
             <h3>{activeProfile.name || "姓名待补充"}</h3>
             <p className="profile-department">
-              {activeProfile.department || "所在机构待补充"}
-              <span>·</span>
-              {activeProfile.role || "岗位待补充"}
+              <span className="profile-unit">{activeProfile.department || "所在机构待补充"}</span>
+              <span className="profile-role">{activeProfile.role || "岗位待补充"}</span>
             </p>
             <div className="content-block reflection-block">
               <p className="content-label"><span>01</span> PRACTICE NOTES / 岗位感悟</p>
@@ -424,8 +423,8 @@ export default function Home() {
         </div>
         <div className="footer-meta">
           <p><span>来源</span>中国银行益阳分行团委</p>
-          <p><span>栏目</span>青鉴实干｜政绩观</p>
-          <p><span>资料</span>益阳分行青年干部岗位感悟</p>
+          <p><span>编辑</span>曾子刚、周冰玉</p>
+          <p><span>审核</span>刘娟</p>
         </div>
       </footer>
     </main>

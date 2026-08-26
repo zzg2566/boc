@@ -1,15 +1,15 @@
 const EPSILON = 0.0001;
 
 export const MUSIC_TIMING = {
-  bpm: 60,
-  stepSeconds: 60 / 60 / 2,
+  bpm: 52,
+  stepSeconds: 60 / 52 / 2,
   lookAheadMs: 50,
-  scheduleAheadSeconds: 0.65,
+  scheduleAheadSeconds: 0.8,
   startDelaySeconds: 0.06,
   maxStepsPerTick: 8,
   totalSteps: 32,
-  arpeggioDuration: 2.4,
-  melodyDuration: 2.9,
+  arpeggioDuration: 3.4,
+  melodyDuration: 4.1,
 } as const;
 
 export type MusicSchedulePosition = {
@@ -56,16 +56,16 @@ const CHORDS = [
   [43, 50, 55, 59], // G
 ] as const;
 
-// Sparse broken-chord pattern; nulls leave breathing room between tones.
-const ARPEGGIO: ReadonlyArray<number | null> = [0, null, 2, null, 1, 3, null, 2];
+// Sparse broken-chord pattern; the slower pulse and rests leave more breathing room.
+const ARPEGGIO: ReadonlyArray<number | null> = [0, null, 1, null, 2, null, 3, null];
 
 // A slow, gentle melody that only sings a few notes per phrase,
 // staying between G4 and E5 so it feels like soft piano touches.
 const MELODY: ReadonlyArray<number | null> = [
-  76, null, null, 74, null, null, 72, null,
-  null, 71, null, null, null, null, null, null,
-  72, null, null, 69, null, null, 67, null,
-  null, 69, null, null, 72, null, null, null,
+  67, null, null, 72, null, null, 71, null,
+  69, null, null, 67, null, null, null, null,
+  69, null, null, 72, null, null, 69, null,
+  67, null, null, 64, null, null, 67, null,
 ];
 
 const midiToHz = (midi: number) => 440 * (2 ** ((midi - 69) / 12));
@@ -82,15 +82,15 @@ export function createYouthMusicEngine(context: AudioContext) {
 
   mix.gain.value = 0.95;
   filter.type = "lowpass";
-  filter.frequency.value = 2400;
-  filter.Q.value = 0.4;
-  delay.delayTime.value = 0.21;
-  delayWet.gain.value = 0.13;
-  compressor.threshold.value = -12;
+  filter.frequency.value = 1850;
+  filter.Q.value = 0.3;
+  delay.delayTime.value = 0.28;
+  delayWet.gain.value = 0.1;
+  compressor.threshold.value = -18;
   compressor.knee.value = 6;
-  compressor.ratio.value = 3.5;
-  compressor.attack.value = 0.004;
-  compressor.release.value = 0.22;
+  compressor.ratio.value = 2.5;
+  compressor.attack.value = 0.008;
+  compressor.release.value = 0.35;
   master.gain.value = EPSILON;
 
   mix.connect(filter);
@@ -158,8 +158,8 @@ export function createYouthMusicEngine(context: AudioContext) {
     oscillator.stop(start + duration + 0.05);
   };
 
-  // Piano-like voice: a soft fundamental with two quiet overtones that decay
-  // faster than the fundamental, plus a slow attack for a gentle key touch.
+  // A mellow piano-like voice: a soft triangle fundamental and two restrained
+  // overtones that decay quickly, leaving a warm and uncluttered tail.
   const scheduleTone = (
     midi: number,
     start: number,
@@ -171,8 +171,8 @@ export function createYouthMusicEngine(context: AudioContext) {
   ) => {
     const fundamental = midiToHz(midi);
     schedulePartial(fundamental, start, peak, duration, type, attack, detune);
-    schedulePartial(fundamental * 2, start, peak * 0.32, duration * 0.55, "sine", attack, detune);
-    schedulePartial(fundamental * 3, start, peak * 0.1, duration * 0.3, "sine", attack, detune);
+    schedulePartial(fundamental * 2, start, peak * 0.22, duration * 0.42, "sine", attack, detune);
+    schedulePartial(fundamental * 3, start, peak * 0.06, duration * 0.2, "sine", attack, detune);
   };
 
   const scheduleStep = (scoreStep: number, time: number) => {
@@ -185,11 +185,11 @@ export function createYouthMusicEngine(context: AudioContext) {
       scheduleTone(
         chord[arpeggioIndex],
         time,
-        phraseStep === 0 ? 0.034 : 0.028,
+        phraseStep === 0 ? 0.026 : 0.021,
         MUSIC_TIMING.arpeggioDuration,
-        "sine",
-        0.02,
-        phraseStep % 2 ? 1.2 : -1.2,
+        "triangle",
+        0.012,
+        phraseStep % 2 ? 0.8 : -0.8,
       );
     }
 
@@ -198,16 +198,16 @@ export function createYouthMusicEngine(context: AudioContext) {
       scheduleTone(
         melodyMidi,
         time + 0.015,
-        phraseStep === 0 ? 0.05 : 0.042,
+        phraseStep === 0 ? 0.038 : 0.032,
         MUSIC_TIMING.melodyDuration,
-        "sine",
-        0.025,
+        "triangle",
+        0.014,
       );
     }
 
     // Soft root pedal at the start and middle of each phrase.
     if (phraseStep === 0 || phraseStep === 4) {
-      scheduleTone(chord[0] - 12, time, 0.024, 2.8, "sine", 0.03);
+      scheduleTone(chord[0] - 12, time, 0.018, 3.6, "sine", 0.025);
     }
   };
 
@@ -240,7 +240,7 @@ export function createYouthMusicEngine(context: AudioContext) {
       const now = context.currentTime;
       master.gain.cancelScheduledValues(now);
       master.gain.setValueAtTime(Math.max(master.gain.value, EPSILON), now);
-      master.gain.exponentialRampToValueAtTime(0.15, now + 0.6);
+      master.gain.exponentialRampToValueAtTime(0.11, now + 0.9);
       running = true;
       nextNoteTime = now + MUSIC_TIMING.startDelaySeconds;
       clearScheduler();
