@@ -37,7 +37,7 @@ yarn-error.log*
 .vercel
 
 /dist/
-\n+# local static export (published copy lives in /docs)
+# local static export (published copy lives in /docs)
 /pages/
 /.wrangler/
 /outputs/
