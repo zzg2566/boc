@@ -28,5 +28,6 @@ test("server-renders the 青鉴实干 H5", async () => {
   assert.match(html, /<span class="profile-role">行长<\/span>/);
   assert.match(html, /<span>编辑<\/span>曾子刚、周冰玉/);
   assert.match(html, /<span>审核<\/span>刘娟/);
+  assert.doesNotMatch(html, /笃行者|奋斗者/);
   assert.doesNotMatch(html, /codex-preview|SkeletonPreview|Your site is taking shape/);
 });

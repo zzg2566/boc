@@ -373,7 +373,7 @@ export default function Home() {
                 <small>PORTRAIT MATERIAL PENDING</small>
               </div>
             )}
-            <div className="photo-caption"><span>BOC YOUTH</span><b>笃行者 · 奋斗者</b></div>
+            <div className="photo-caption"><span>BOC YOUTH</span></div>
           </div>
 
           <div className="profile-content" key={activeProfile.slot}>
